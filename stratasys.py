@@ -109,7 +109,7 @@ def output_postproc(indata):
     `machineStatus(extended)`
     """
     # Mapping modelerType to name of extended stanza
-    name_map = {'paia' : 'mariner', 'lffs' : 'lffs', 'sst1230' : 'mariner', 'solo' : 'solo', 'dorado1': 'dorado1'}
+    name_map = {'paia' : 'mariner', 'lffs' : 'lffs', 'sst1230' : 'mariner', 'solo' : 'solo', 'dorado1': 'dorado1', 'dorado3': 'dorado3'}
     name=name_map[indata['machineStatus(general)']['modelerType']]
     nameKey="machineStatus("+name+")"
     indata['machineStatus(extended)'] = indata[nameKey]
@@ -125,6 +125,8 @@ def output_postproc(indata):
        indata['machineStatus(extended)']['machineName'] = "Mojo"
     elif indata['machineStatus(general)']['modelerType'] == 'dorado1':
        indata['machineStatus(extended)']['machineName'] = "F170"
+    elif indata['machineStatus(general)']['modelerType'] == 'dorado3':
+        indata['machineStatus(extended)']['machineName'] = "F370"
     else:
        indata['machineStatus(extended)']['machineName'] = "Other"
     return indata
